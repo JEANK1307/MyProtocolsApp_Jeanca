@@ -16,7 +16,7 @@
 
             <Switch x:Name="SwShowPassword" IsToggled="False" Toggled="SwShowPassword_Toggled" />
 
-            <Button x:Name="BtnLogin" Text="LOGIN" BackgroundColor="Green" CornerRadius="15"/>
+            <Button x:Name="BtnLogin" Text="LOGIN" BackgroundColor="Green" CornerRadius="15" Clicked="BtnLogin_Clicked" />
 
             <Button x:Name="BtnSignUp" Text="SIGN UP" BackgroundColor="Blue" CornerRadius="15"/>
 
