@@ -48,7 +48,7 @@ namespace MyProtocolsApp_Jeanca.Models
                 //services\APIConnection para agregar el sufijo y lograr la ruta
                 //completa de consumo del end point que se quiere usar.
 
-                string RouteSufix = string.Format("Users/ValidateLogin?username={0}.com&password={1}", 
+                string RouteSufix = string.Format("Users/ValidateLogin?username={0}&password={1}", 
                     this.Email,this.Password);
 
                 //armamos la ruta completa al endpoint en el API
