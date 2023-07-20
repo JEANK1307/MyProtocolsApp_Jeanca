@@ -21,10 +21,12 @@ namespace MyProtocolsApp_Jeanca.ViewModels
 
         public User MyUser { get; set; }
 
+        public UserRole MyUserRole { get; set; }
 
         public UserViewModel() 
         {
             MyUser = new User();
+            MyUserRole = new UserRole();
         }
 
         //Funciones
@@ -68,7 +70,71 @@ namespace MyProtocolsApp_Jeanca.ViewModels
 
         }
 
+        //Carga la lista de roles, que se usaran por ejemplo en el picker de roles en la 
+        //creación de un usuario nuevo
+        public async Task<List<UserRole>> GetUserRolesAsync()
+        {
+            try
+            {
+                List<UserRole> roles = new List<UserRole>();
 
+                roles = await MyUserRole.GetAllUserRolesAsync();
+
+                if(roles == null)
+                {
+                    return null;
+                }
+
+                return roles;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        //Función de creación de usuario nuevo
+        public async Task<bool> AddUserAsync(string pEmail,
+                                             string pPassword,
+                                             string pName,
+                                             string pBackUpEmail,
+                                             string pPhoneNumber,
+                                             string pAddress,
+                                             int pUserRoleID)
+        {
+            if (IsBusy) return false;
+            IsBusy = true;
+
+            try
+            {
+
+                MyUser = new User();
+
+                MyUser.Email = pEmail;
+                MyUser.Password = pPassword;
+                MyUser.Name = pName;
+                MyUser.BackUpEmail = pBackUpEmail;
+                MyUser.PhoneNumber = pPhoneNumber;
+                MyUser.UserRoleId = pUserRoleID;
+
+                bool R = await MyUser.AddUserAsync();
+
+                return R;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally 
+            { 
+                IsBusy = false; 
+            }
+
+
+        }
 
     }
 }
