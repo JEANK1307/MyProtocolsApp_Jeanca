@@ -23,13 +23,39 @@ namespace MyProtocolsApp_Jeanca.ViewModels
 
         public UserRole MyUserRole { get; set; }
 
+        public UserDTO MyUserDTO { get; set; }
+
         public UserViewModel() 
         {
             MyUser = new User();
             MyUserRole = new UserRole();
+            MyUserDTO = new UserDTO();
         }
 
         //Funciones
+
+        //Funcion que carga los datos del objeto de usuario global
+        public async Task<UserDTO>GetUserDataAsync(string pEmail)
+        {
+            if (IsBusy) return null; 
+            IsBusy = true;
+
+            try
+            {
+                UserDTO userDTO = new UserDTO();
+
+                userDTO = await MyUserDTO.GetUserInfo(pEmail);
+
+                if (userDTO == null) return null;
+                return userDTO;
+            }
+            catch (Exception)
+            {
+                return null;
+                throw;
+            }
+            finally { IsBusy = false; }
+        }
 
         //Función para validar el ingreso de l usuario al app por medio
         //del login

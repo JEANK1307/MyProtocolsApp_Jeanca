@@ -108,6 +108,7 @@ namespace MyProtocolsApp_Jeanca.Models
 
                 Request.AddHeader(Services.APIConnection.ApiKeyName, Services.APIConnection.ApiKeyValue);
 
+                Request.AddHeader(GlobalObjects.ContentType, GlobalObjects.MimeType);
 
                 //En el caso de una operación POST debemos serializar el objeto para pasarlo como
                 //json al API
