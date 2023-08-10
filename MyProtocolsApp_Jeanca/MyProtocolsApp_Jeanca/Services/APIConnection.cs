@@ -13,8 +13,8 @@ namespace MyProtocolsApp_Jeanca.Services
         //donde el prefijo sera la parte URL que nunca cambiará y el sefijo será la parate variable
         //(nombre del controlardor y sus parámetros).
 
-        public static string ProductionPrefixURL = "http://192.168.0.8:45455/api/";
-        public static string TestingPrefixURL = "http://192.168.0.8:45455/api/";
+        public static string ProductionPrefixURL = "http://192.168.0.10:45456/api/";
+        public static string TestingPrefixURL = "http://192.168.0.10:45456/api/";
 
         public static string ApiKeyName = "Progra6ApiKey";
         public static string ApiKeyValue = "JeanProgra6AsdZxc12345";

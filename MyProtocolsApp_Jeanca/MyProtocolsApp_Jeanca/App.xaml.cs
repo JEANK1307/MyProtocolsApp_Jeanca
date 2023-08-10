@@ -13,7 +13,7 @@ namespace MyProtocolsApp_Jeanca
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            //DependencyService.Register<MockDataStore>();
             //definimos la forma de apilar páginas en la pantalla
             //y cuál es la primera página que mostraremos
             MainPage = new NavigationPage(new AppLoginPage());

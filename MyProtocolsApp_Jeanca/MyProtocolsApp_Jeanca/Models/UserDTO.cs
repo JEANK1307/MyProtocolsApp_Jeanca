@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -81,7 +82,63 @@ namespace MyProtocolsApp_Jeanca.Models
                 throw;
             }
         }
-    
+
+
+        public async Task<bool> UpdateUserAsync()
+        {
+            try
+            {
+                //Usaremos el prefijo de la ruta URL del API que se indica en
+                //services\APIConnection para agregar el sufijo y lograr la ruta
+                //completa de consumo del end point que se quiere usar.
+
+                string RouteSufix = string.Format("Users/{0}", this.IDUsuario);
+
+                //armamos la ruta completa al endpoint en el API
+
+                string URL = Services.APIConnection.ProductionPrefixURL + RouteSufix;
+
+                RestClient client = new RestClient(URL);
+
+                Request = new RestRequest(URL, Method.Put);
+
+                //agregamos mecanismo de seguridad, en este caso API key
+
+                Request.AddHeader(Services.APIConnection.ApiKeyName, Services.APIConnection.ApiKeyValue);
+
+                Request.AddHeader(GlobalObjects.ContentType, GlobalObjects.MimeType);
+
+                //En el caso de una operación POST debemos serializar el objeto para pasarlo como
+                //json al API
+                string SerializedModelObject = JsonConvert.SerializeObject(this);
+                //Agregamos el objeto serializado al cuerpo del request.
+                Request.AddBody(SerializedModelObject, GlobalObjects.MimeType);
+
+
+                //ejecutar la llamada al API
+                RestResponse response = await client.ExecuteAsync(Request);
+
+                //saber si las cosas salieron bien
+                HttpStatusCode statusCode = response.StatusCode;
+
+                if (statusCode == HttpStatusCode.OK)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+                throw;
+            }
+        }
+
+
+
 
     }
 }

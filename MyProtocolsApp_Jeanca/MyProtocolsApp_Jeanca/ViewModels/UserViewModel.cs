@@ -57,6 +57,28 @@ namespace MyProtocolsApp_Jeanca.ViewModels
             finally { IsBusy = false; }
         }
 
+
+        public async Task<bool> UpdateUser(UserDTO pUser)
+        {
+            if (IsBusy) return false;
+            IsBusy = true;
+
+            try
+            {
+                MyUserDTO = pUser;
+
+                bool R = await MyUserDTO.UpdateUserAsync();
+
+                return R;
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+            finally { IsBusy = false; }
+        }
+
         //Función para validar el ingreso de l usuario al app por medio
         //del login
 
