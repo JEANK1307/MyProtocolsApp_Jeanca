@@ -28,7 +28,7 @@
                             x:Name="BtnProtocolManagment" Text="Protocol Managment"
                             BackgroundColor="Green" TextColor="White"
                             HeightRequest="150" WidthRequest="100"
-                            CornerRadius="25" BorderColor="AntiqueWhite" BorderWidth="2"/>
+                            CornerRadius="25" BorderColor="AntiqueWhite" BorderWidth="2" Clicked="BtnProtocolManagment_Clicked"/>
 
                     <Button Grid.Column="1" Grid.Row="0" 
                             x:Name="BtnUserManagment" Text="User Managment"

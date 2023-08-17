@@ -34,12 +34,15 @@
     <PackageReference Include="Acr.UserDialogs" Version="7.2.0.564" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="RestSharp" Version="110.2.0" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />  
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.7" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2612" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.8.0" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="Views\AppLoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ProtocolsListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\StartPage.xaml">

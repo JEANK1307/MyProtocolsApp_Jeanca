@@ -28,5 +28,10 @@ namespace MyProtocolsApp_Jeanca.Views
         {
             await Navigation.PushAsync(new UserManagementPage());
         }
+
+        private async void BtnProtocolManagment_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProtocolsListPage());
+        }
     }
 }
